@@ -12,19 +12,19 @@ A simulation consisting of a Master, a dedicated machine to manage the resources
 1. config.json <br>
      This is a configuration file of the format <br>
      { <br>
-     "Workers": [<br>
-     {<br>
-          "worker_id": <worker_id>,<br>
-          "slots": <number of slots>,<br>
-          "port": <port number><br>
-     },<br>
-     {<br>
-      "Worker_id": <Worker_id>,<br>
-      "slots": <number of slots>,<br>
-      "port": <port number><br>
-     },<br>
-      …<br>
-     ]<br>
+          "Workers": [<br>
+          {<br>
+               "worker_id": <worker_id>,<br>
+               "slots": <number of slots>,<br>
+               "port": <port number><br>
+          },<br>
+          {<br>
+               "Worker_id": <Worker_id>,<br>
+               "slots": <number of slots>,<br>
+               "port": <port number><br>
+           },<br>
+          …<br>
+          ]<br>
      }<br>
 <br>
 2. requests.py  <br>
