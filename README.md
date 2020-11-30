@@ -27,7 +27,7 @@ A simulation consisting of a Master, a dedicated machine to manage the resources
           ]<br>
      }<br>
 <br>
-2. requests.py  <br>
+ 2. requests.py  <br>
      Generates job requests taking the number of requests as command line argument. <br>
      Each request has the following JSON format.<br>
      {<br>
@@ -48,10 +48,10 @@ A simulation consisting of a Master, a dedicated machine to manage the resources
           ]<br>
       }<br>
   <br>
-3. Master.py <br>
+ 3. Master.py <br>
      The master machine which listens to incoming requests and schedules the tasks on workers.<br>
 <br>
-4. Worker.py <br>
+ 4. Worker.py <br>
      The worker machine which simulates the tasks given by the master.<br>
 <br>
 
