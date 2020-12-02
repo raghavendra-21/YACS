@@ -17,11 +17,11 @@ Note: Each algorithm has a different log file associated.
 '''
 Taskfilename = None
 if sys.argv[2] == "RANDOM":
-    Taskfilename = "TaskLog_Random.csv"
+    Taskfilename = "Logs/TaskLog_Random.csv"
 elif sys.argv[2] == "RR":
-    Taskfilename = "TaskLog_RR.csv"
+    Taskfilename = "Logs/TaskLog_RR.csv"
 elif sys.argv[2] == "LL":
-    Taskfilename = "TaskLog_LL.csv"
+    Taskfilename = "Logs/TaskLog_LL.csv"
 
 taskLogFile = open(Taskfilename,'w')
 with open(Taskfilename, 'a', newline='') as f:
@@ -34,11 +34,11 @@ Note: Each algorithm has a different log file associated.
 '''
 Jobfilename = None
 if sys.argv[2] == "RANDOM":
-    Jobfilename = "JobLog_Random.csv"
+    Jobfilename = "Logs/JobLog_Random.csv"
 elif sys.argv[2] == "RR":
-    Jobfilename = "JobLog_RR.csv"
+    Jobfilename = "Logs/JobLog_RR.csv"
 elif sys.argv[2] == "LL":
-    Jobfilename = "JobLog_LL.csv"
+    Jobfilename = "Logs/JobLog_LL.csv"
 
 JobLogFile = open(Jobfilename,'w')
 with open(Jobfilename, 'a', newline='') as f:
@@ -51,11 +51,11 @@ Note: Each algorithm has a different log file associated.
 '''
 TaskScheduleLog = None
 if sys.argv[2] == "RANDOM":
-    TaskScheduleLog = "TaskScheduleLog_Random.csv"
+    TaskScheduleLog = "Logs/TaskScheduleLog_Random.csv"
 elif sys.argv[2] == "RR":
-    TaskScheduleLog = "TaskScheduleLog_RR.csv"
+    TaskScheduleLog = "Logs/TaskScheduleLog_RR.csv"
 elif sys.argv[2] == "LL":
-    TaskScheduleLog = "TaskScheduleLog_LL.csv"
+    TaskScheduleLog = "Logs/TaskScheduleLog_LL.csv"
 
 taskLogFile = open(TaskScheduleLog,'w')
 with open(TaskScheduleLog, 'a', newline='') as f:
