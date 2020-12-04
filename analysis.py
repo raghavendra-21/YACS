@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import seaborn as sns
 
-# PART 1 - Median and Mode of job and task execution times
+# PART 1 - Median and Mean of job and task execution times
 
 df_jobll = pd.read_csv("./Logs/JobLog_LL.csv")
 df_jobrr = pd.read_csv("./Logs/JobLog_RR.csv")
@@ -16,35 +16,66 @@ df_taskran = pd.read_csv("./Logs/TaskLog_Random.csv")
 mean_taskll = df_taskll.mean(axis = 0)['Execution_time']
 mean_taskrr = df_taskrr.mean(axis = 0)['Execution_time']
 mean_taskran = df_taskran.mean(axis = 0)['Execution_time']
-print("Mean task execution time in least loaded algorithm:", mean_taskll)
-print("Mean task execution time in round robin algorithm:", mean_taskrr)
-print("Mean task execution time in random algorithm:", mean_taskran)
-print("\n")
+median_taskll = df_taskll.median(axis = 0)['Execution_time']
+median_taskrr = df_taskrr.median(axis = 0)['Execution_time']
+median_taskran = df_taskran.median(axis = 0)['Execution_time']
+
+# Mean and median bar graph for task execution times
+barWidth = 0.25
+
+pos = list(range(3))
+labels = ['Random', 'Least-Loaded', 'Round-Robin']
+task_means = [mean_taskran, mean_taskll, mean_taskrr]
+task_medians = [median_taskran, median_taskll, median_taskrr]
+
+r1 = np.arange(len(task_means))
+r2 = [x + barWidth for x in r1]
+
+fig, ax = plt.subplots(figsize=(12,9))
+plt.bar(r1, task_means, color='#EE631D', width=barWidth, edgecolor='white', label='Mean')
+plt.bar(r2, task_medians, color='#1874A0', width=barWidth, edgecolor='white', label='Median')
+
+ax.set_title('Mean and median task execution time comparison of three algorithms', fontsize=18)
+ax.set_xticks([p + 0.5 * barWidth for p in pos])
+ax.set_xticklabels(labels)
+
+plt.ylabel('Execution time (sec)', fontsize=16)
+plt.xticks([r - 0.125 + barWidth for r in range(len(task_means))], labels, fontsize=13)
+plt.legend()
+plt.savefig('./Logs/Plots/TaskMeanMedian.jpeg', bbox_inches='tight')
+plt.show()
 
 mean_jobll = df_jobll.mean(axis = 0)['Execution_time']
 mean_jobrr = df_jobrr.mean(axis = 0)['Execution_time']
 mean_jobran = df_jobran.mean(axis = 0)['Execution_time']
-print("Mean job execution time in least loaded algorithm:", mean_jobll)
-print("Mean job execution time in round robin algorithm:", mean_jobrr)
-print("Mean job execution time in random algorithm:", mean_jobran)
-print("\n")
-
-median_taskll = df_taskll.median(axis = 0)['Execution_time']
-median_taskrr = df_taskrr.median(axis = 0)['Execution_time']
-median_taskran = df_taskran.median(axis = 0)['Execution_time']
-print("Median task execution time in least loaded algorithm:", median_taskll)
-print("Median task execution time in round robin algorithm:", median_taskrr)
-print("Median task execution time in random algorithm:", median_taskran)
-print("\n")
-
 median_jobll = df_jobll.median(axis = 0)['Execution_time']
 median_jobrr = df_jobrr.median(axis = 0)['Execution_time']
 median_jobran = df_jobran.median(axis = 0)['Execution_time']
-print("Median job execution time in least loaded algorithm:", median_jobll)
-print("Median job execution time in round robin algorithm:", median_jobrr)
-print("Median job execution time in random algorithm:", median_jobran)
-print("\n")
 
+# Mean and median bar graph for job execution times
+barWidth = 0.25
+
+pos = list(range(3))
+labels = ['Random', 'Least-Loaded', 'Round-Robin']
+job_means = [mean_jobran, mean_jobll, mean_jobrr]
+job_medians = [median_jobran, median_jobll, median_jobrr]
+
+r1 = np.arange(len(job_means))
+r2 = [x + barWidth for x in r1]
+
+fig, ax = plt.subplots(figsize=(12,9))
+plt.bar(r1, job_means, color='#EE631D', width=barWidth, edgecolor='white', label='Mean')
+plt.bar(r2, job_medians, color='#1874A0', width=barWidth, edgecolor='white', label='Median')
+
+ax.set_title('Mean and median job execution time comparison of three algorithms', fontsize=18)
+ax.set_xticks([p + 0.5 * barWidth for p in pos])
+ax.set_xticklabels(labels)
+
+plt.ylabel('Execution time (sec)', fontsize=16)
+plt.xticks([r - 0.125 + barWidth for r in range(len(task_means))], labels, fontsize=13)
+plt.legend()
+plt.savefig('./Logs/Plots/JobMeanMedian.jpeg', bbox_inches='tight')
+plt.show()
 
 
 # PART 2 - Plots the number of tasks scheduled on each machine, against time, for each scheduling algorithm
