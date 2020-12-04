@@ -38,6 +38,7 @@ def updateto_master(task_desc, taskArrivalTime):
   to_send['job_id'] = task_desc['job_id']
   to_send['flag'] = task_desc['flag']
   to_send['port'] = int(sys.argv[1])
+  to_send['scheduled_time'] = task_desc['scheduled_time']
   to_send['execution_time'] = taskEndTime - taskArrivalTime
   to_send['arrival_time'] = taskArrivalTime - process_start_time
   s = socket.socket()       

@@ -226,6 +226,7 @@ def worker_update():
         c, addr = s.accept()      
         received=c.recv(2048)
         updateTime = time()
+        updateArrivalTime = time() - process_start_time
         updateRequest = json.loads(received)
 
         lockWorkerState.acquire()
@@ -234,9 +235,10 @@ def worker_update():
         workersState[worker_port][2] -= 1
         lockWorkerState.release()
 
-        taskLog[(updateRequest['task_id'], updateRequest['job_id'])] = (updateRequest['execution_time'], int(worker_port))
+        taskExecutionTime = updateArrivalTime-updateRequest['scheduled_time']
+        taskLog[(updateRequest['task_id'], updateRequest['job_id'])] = (taskExecutionTime, int(worker_port))
         
-        print("Task {0} of Job {1} has successfully completed execution.\nExecution time: {2} seconds".format(updateRequest['task_id'], updateRequest['job_id'], updateRequest['execution_time']))
+        print("Task {0} of Job {1} has successfully completed execution.\nExecution time: {2} seconds".format(updateRequest['task_id'], updateRequest['job_id'], taskExecutionTime))
         print("\n")
 
         with open(Taskfilename, 'a', newline='') as f:
@@ -246,7 +248,7 @@ def worker_update():
                 MRFlag = "M"
             else:
                 MRFlag = "R"
-            writer.writerow([updateRequest['task_id'], updateRequest['job_id'], MRFlag, worker_id, updateRequest['execution_time'], updateRequest['arrival_time']])
+            writer.writerow([updateRequest['task_id'], updateRequest['job_id'], MRFlag, worker_id, taskExecutionTime, updateRequest['arrival_time']])
 
         if updateRequest['flag'] == True:
             lockJobState.acquire()
@@ -328,9 +330,12 @@ def assignWorker(job):
     else:
         print("Invalid algorithm is entered.")
 
+    scheduledTime = time()-process_start_time
+    data['scheduled_time'] = scheduledTime
+
     with open(TaskScheduleLog, 'a', newline='') as f:
         writer = csv.writer(f)
-        writer.writerow([job[1], worker, time()-process_start_time])
+        writer.writerow([job[1], worker, scheduledTime])
 
     s = socket.socket()
     s.connect(('127.0.0.1', int(worker)))
