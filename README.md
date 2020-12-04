@@ -10,7 +10,6 @@ Raghavendra M - PES1201801434 <br>
 Chethan B R - PES1201801497 <br>
 Narayan P Kulkarni - PES1201801747 <br>
 <br>
-<br>
 ### **Scheduling algorithms implemented:** <br>
 1. Random <br>
 2. Round Robin <br>
