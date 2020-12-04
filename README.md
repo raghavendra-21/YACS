@@ -2,6 +2,14 @@
 Yet Another Centralized Scheduler (YACS) - 
 A simulation consisting of a Master, a dedicated machine to manage the resources of other machines in the cluster. Worker machines execute the tasks in their respective slots. The Master machine schedules tasks to different slots in the Worker machines based on the algorithm implemented.
 <br>
+### **Team Details** <br>
+Team ID - BD_1432_1434_1497_1747 <br><br>
+Team Members: <br>
+Samarth G Vashist - PES1201801432 <br>
+Raghavendra M - PES1201801434 <br>
+Chethan B R - PES1201801497 <br>
+Narayan P Kulkarni - PES1201801747 <br>
+<br>
 <br>
 ### **Scheduling algorithms implemented:** <br>
 1. Random <br>
