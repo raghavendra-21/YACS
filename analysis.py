@@ -50,6 +50,26 @@ median_jobll = df_jobll.median(axis = 0)['Execution_time']
 median_jobrr = df_jobrr.median(axis = 0)['Execution_time']
 median_jobran = df_jobran.median(axis = 0)['Execution_time']
 
+print("Mean task execution time in least loaded algorithm:", mean_taskll)
+print("Mean task execution time in round robin algorithm:", mean_taskrr)
+print("Mean task execution time in random algorithm:", mean_taskran)
+print("\n")
+
+print("Mean job execution time in least loaded algorithm:", mean_jobll)
+print("Mean job execution time in round robin algorithm:", mean_jobrr)
+print("Mean job execution time in random algorithm:", mean_jobran)
+print("\n")
+
+print("Median task execution time in least loaded algorithm:", median_taskll)
+print("Median task execution time in round robin algorithm:", median_taskrr)
+print("Median task execution time in random algorithm:", median_taskran)
+print("\n")
+
+print("Median job execution time in least loaded algorithm:", median_jobll)
+print("Median job execution time in round robin algorithm:", median_jobrr)
+print("Median job execution time in random algorithm:", median_jobran)
+print("\n") 
+
 # Mean and median bar graph for job execution times
 barWidth = 0.25
 
